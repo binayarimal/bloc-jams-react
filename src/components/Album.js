@@ -17,6 +17,7 @@ class Album extends Component{
   render(){
   return(
        <section className='album'>
+
          <section id="album-info">
                 <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
                 <div className="album-details">
@@ -25,15 +26,27 @@ class Album extends Component{
                   <div id="release-info">{this.state.album.releaseInfo}</div>
                 </div>
               </section>
-          <table id="song-list">
-                     <colgroup>
-                           <col id="song-number-column" />
-                           <col id="song-title-column" />
-                           <col id="song-duration-column" />
-                         </colgroup>
-                         <tbody>
-                         </tbody>
+
+
+          <table id="song-list" >
+          <colgroup>
+ <col id="song-number-column" />
+ <col id="song-title-column" />
+ <col id="song-duration-column" />
+          </colgroup>
+          <tbody>
+          {this.state.album.songs.map((songs, index)=>
+            <tr key ={index}>
+                <th>{index+1}</th>
+                <th>{songs.title}</th>
+                <th>{songs.duration}</th>
+            </tr>
+
+
+          )}
+          </tbody>
           </table>
+
          </section>
      );
   }
