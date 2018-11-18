@@ -14,7 +14,7 @@ class Album extends Component{
       currentSong: album.songs[0],
       isPlaying: false,
       hoveredSong: null,
-      hoveredIcon:"ion-pause",
+
 
 
     }
@@ -51,29 +51,34 @@ handleSongClick(song) {
 
 hover(song){
  this.setState({hoveredSong:song});
-if(this.state.currentSong !== song){
-this.setState({hoveredIcon: "ions-pause"});
- console.log(this.state.hoveredIcon)
-}
+
 
 }
 
 hoverOut(){
  this.setState({hoveredSong:null});
-this.setState({hoveredIcon: null})
- }
-
-
-
- currentSongIcon(){
-   if (this.state.currentSong === this.state.hoveredSong &&
-     this.state.isPlaying === true){console.log("ions-play")} else if
-     (this.state.currentSong === this.state.hoveredSong &&
-       this.state.isPlaying === false){console.log("ions-pause")} else {this.hover()}
-
 
  }
 
+ currentSongIcon(song){
+
+   if (this.state.currentSong === song){
+     if (this.state.isPlaying === true ) {
+       if (this.state.currentSong === this.state.hoveredSong){
+         console.log("pause")
+       }
+       else {console.log("play")}
+     }
+     else {console.log("play")}
+   }
+   else{if (song === this.state.hoveredSong)
+     {console.log("play")} else {}}
+   }
+
+
+
+
+}
 render(){
 
   return(
@@ -98,8 +103,8 @@ render(){
           <tbody>
           {this.state.album.songs.map((song, index)=>
             <tr key ={index} onClick = {()=> this.handleSongClick(song)} >
-                <td onMouseOver = {() => this.currentSongIcon()}
-                   onMouseOut ={() => this.hoverOut()}>
+                <td onMouseOver = {() => this.hover(song)}
+                   onMouseOut ={() => this.hoverOut(song)}>
                   {index+1} </td>
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
