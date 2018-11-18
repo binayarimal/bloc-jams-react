@@ -10,11 +10,72 @@ class Album extends Component{
     });
 
     this.state = {
-      album: album
-    };
-  }
+      album: album,
+      currentSong: album.songs[0],
+      isPlaying: false,
+      hoveredSong: null,
+      hoveredIcon:"ion-pause",
 
-  render(){
+
+    }
+
+    this.audioElement = document.createElement('audio');
+    this.audioElement.src = album.songs[0].audioSrc;
+}
+  play(){
+    this.audioElement.play();
+    this.setState({ isPlaying: true });
+  }
+  pause(){
+   this.audioElement.pause();
+   this.setState({ isPlaying: false });
+}
+
+setSong(song) {
+ this.audioElement.src = song.audioSrc;
+ this.setState({ currentSong: song });
+}
+
+
+handleSongClick(song) {
+   const isSameSong = this.state.currentSong === song;
+   if (this.state.isPlaying && isSameSong) {
+     this.pause();
+   } else {
+        if (!isSameSong) { this.setSong(song); }
+     this.play();
+   }
+ }
+
+
+
+hover(song){
+ this.setState({hoveredSong:song});
+if(this.state.currentSong !== song){
+this.setState({hoveredIcon: "ions-pause"});
+ console.log(this.state.hoveredIcon)
+}
+
+}
+
+hoverOut(){
+ this.setState({hoveredSong:null});
+this.setState({hoveredIcon: null})
+ }
+
+
+
+ currentSongIcon(){
+   if (this.state.currentSong === this.state.hoveredSong &&
+     this.state.isPlaying === true){console.log("ions-play")} else if
+     (this.state.currentSong === this.state.hoveredSong &&
+       this.state.isPlaying === false){console.log("ions-pause")} else {this.hover()}
+
+
+ }
+
+render(){
+
   return(
        <section className='album'>
 
@@ -35,11 +96,16 @@ class Album extends Component{
  <col id="song-duration-column" />
           </colgroup>
           <tbody>
-          {this.state.album.songs.map((songs, index)=>
-            <tr key ={index}>
-                <th>{index+1}</th>
-                <th>{songs.title}</th>
-                <th>{songs.duration}</th>
+          {this.state.album.songs.map((song, index)=>
+            <tr key ={index} onClick = {()=> this.handleSongClick(song)} >
+                <td onMouseOver = {() => this.currentSongIcon()}
+                   onMouseOut ={() => this.hoverOut()}>
+                  {index+1} </td>
+                <td>{song.title}</td>
+                <td>{song.duration}</td>
+
+
+
             </tr>
 
 
