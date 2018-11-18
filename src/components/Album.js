@@ -2,6 +2,7 @@ import React, {Component}from 'react'
 import albumData from './../data/albums';
 
 class Album extends Component{
+
   constructor(props) {
     super(props);
 
@@ -99,8 +100,8 @@ render(){
           <tbody>
           {this.state.album.songs.map((song, index)=>
             <tr key ={index} onClick = {()=> this.handleSongClick(song)} >
-                <td onMouseOver = {() => this.hover(song)}
-                   onMouseOut ={() => this.hoverOut(song)}>
+                <td onMouseEnter = {() => this.hover(song)}
+                   onMouseLeave ={() => this.hoverOut(song)}>
                   {this.currentSongIcon(song, index)} </td>
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
