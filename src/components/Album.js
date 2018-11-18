@@ -60,24 +60,20 @@ hoverOut(){
 
  }
 
- currentSongIcon(song){
+ currentSongIcon(song,index){
 
    if (this.state.currentSong === song){
      if (this.state.isPlaying === true ) {
        if (this.state.currentSong === this.state.hoveredSong){
-         console.log("pause")
+         return <span className="ion-pause"></span>
        }
-       else {console.log("play")}
+       else {   return <span className="ion-pause"></span> }
      }
-     else {console.log("play")}
+     else {return <span className="ion-play"></span>}
    }
    else{if (song === this.state.hoveredSong)
-     {console.log("play")} else {}}
+     {return <span className="ion-play"></span>} else {return index+1}
    }
-
-
-
-
 }
 render(){
 
@@ -105,7 +101,7 @@ render(){
             <tr key ={index} onClick = {()=> this.handleSongClick(song)} >
                 <td onMouseOver = {() => this.hover(song)}
                    onMouseOut ={() => this.hoverOut(song)}>
-                  {index+1} </td>
+                  {this.currentSongIcon(song, index)} </td>
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
 
