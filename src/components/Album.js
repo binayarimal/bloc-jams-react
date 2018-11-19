@@ -65,15 +65,12 @@ hoverOut(){
 
    if (this.state.currentSong === song){
      if (this.state.isPlaying === true ) {
-       if (this.state.currentSong === this.state.hoveredSong){
-         return <span className="ion-pause"></span>
-       }
-       else {   return <span className="ion-pause"></span> }
-     }
-     else {return <span className="ion-play"></span>}
-   }
-   else{if (song === this.state.hoveredSong)
-     {return <span className="ion-play"></span>} else {return index+1}
+       {return <span className="ion-pause"></span>}
+    } else
+         {return <span className="ion-play"></span> }
+  }
+           else{if (song === this.state.hoveredSong)
+              {return <span className="ion-play"></span>} else {return index+1}
    }
 }
 render(){
