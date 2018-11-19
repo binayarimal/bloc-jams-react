@@ -1,5 +1,6 @@
 import React, {Component}from 'react'
 import albumData from './../data/albums';
+ import PlayerBar from './Playerbar';
 
 class Album extends Component{
 
@@ -48,6 +49,13 @@ handleSongClick(song) {
    }
  }
 
+ handlePrevClick() {
+   const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+      const newIndex = Math.max(0, currentIndex - 1);
+      const newSong = this.state.album.songs[newIndex];
+      this.setSong(newSong);
+      this.play();
+    }
 
 
 hover(song){
@@ -85,15 +93,17 @@ render(){
                   <h2 className="artist">{this.state.album.artist}</h2>
                   <div id="release-info">{this.state.album.releaseInfo}</div>
                 </div>
-              </section>
+          </section>
 
 
           <table id="song-list" >
+
           <colgroup>
  <col id="song-number-column" />
  <col id="song-title-column" />
  <col id="song-duration-column" />
           </colgroup>
+
           <tbody>
           {this.state.album.songs.map((song, index)=>
             <tr key ={index} onClick = {()=> this.handleSongClick(song)} >
@@ -102,16 +112,16 @@ render(){
                   {this.currentSongIcon(song, index)} </td>
                 <td>{song.title}</td>
                 <td>{song.duration}</td>
-
-
-
             </tr>
-
-
           )}
-          </tbody>
+            </tbody>
+
           </table>
 
+   <PlayerBar isPlaying={this.state.isPlaying}
+   currentSong={this.state.currentSong}
+  handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+   handlePrevClick={()=>this.handlePrevClick()}/>
          </section>
      );
   }
