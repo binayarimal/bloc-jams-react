@@ -14,9 +14,11 @@ class Album extends Component{
     this.state = {
       album: album,
       currentSong: album.songs[0],
+      currentTime: 0,
+      duration: album.songs[0].duration,
       isPlaying: false,
       hoveredSong: null,
-
+      volume:null,
 
 
     }
@@ -56,6 +58,42 @@ handleSongClick(song) {
       this.setSong(newSong);
       this.play();
     }
+    handleNextClick(song) {
+      const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+      const newIndex = Math.min(this.state.album.songs.length-1, currentIndex + 1);
+      const newSong = this.state.album.songs[newIndex];
+      this.setSong(newSong);
+      this.play();
+    }
+    componentDidMount() {
+      this.eventListeners = {
+         timeupdate: e => {
+           this.setState({ currentTime: this.audioElement.currentTime });
+         },
+         durationchange: e => {
+           this.setState({ duration: this.audioElement.duration });
+         },
+
+       };
+       this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
+       this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+
+  }
+  componentWillUnmount() {
+     this.audioElement.src = null;
+     this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
+     this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+
+   }
+   handleTimeChange(e) {
+    const newTime = this.audioElement.duration * e.target.value;
+    this.audioElement.currentTime = newTime;
+    this.setState({ currentTime: newTime });
+  }
+  handleVolumeChange(e) {
+ this.setState({volume:e.target.value});
+ this.audioElement.volume=e.target.value
+ }
 
 
 hover(song){
@@ -72,9 +110,9 @@ hoverOut(){
  currentSongIcon(song,index){
 
    if (this.state.currentSong === song){
-     if (this.state.isPlaying === true ) {
+     if (this.state.isPlaying === true )
        {return <span className="ion-pause"></span>}
-    } else
+     else
          {return <span className="ion-play"></span> }
   }
            else{if (song === this.state.hoveredSong)
@@ -118,10 +156,17 @@ render(){
 
           </table>
 
-   <PlayerBar isPlaying={this.state.isPlaying}
+   <PlayerBar
+   isPlaying={this.state.isPlaying}
    currentSong={this.state.currentSong}
-  handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-   handlePrevClick={()=>this.handlePrevClick()}/>
+   handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+   handlePrevClick={()=>this.handlePrevClick()}
+   handleNextClick={()=>this.handleNextClick()}
+   currentTime={this.audioElement.currentTime}
+   currentVolume = {this.state.volume}
+   duration={this.audioElement.duration}
+   handleTimeChange={(e) => this.handleTimeChange(e)}
+   handleVoumeChange={(e) => this.handleVolumeChange(e)}/>
          </section>
      );
   }
