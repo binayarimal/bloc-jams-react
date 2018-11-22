@@ -30,6 +30,7 @@ import React, { Component } from 'react';
        </section>
        <section id="volume-control">
          <div className="icon ion-volume-low"></div>
+          <div className="current-time">{this.props.currentVolume}</div>
          <input
             type="range"
             className="volume-bar"

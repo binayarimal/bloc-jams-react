@@ -18,7 +18,7 @@ class Album extends Component{
       duration: album.songs[0].duration,
       isPlaying: false,
       hoveredSong: null,
-      volume:0.2,
+      volume:0.5,
 
 
     }
