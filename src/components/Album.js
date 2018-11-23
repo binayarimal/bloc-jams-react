@@ -3,7 +3,7 @@ import albumData from './../data/albums';
  import PlayerBar from './Playerbar';
 
 class Album extends Component{
-
+// testing commit
   constructor(props) {
     super(props);
 
