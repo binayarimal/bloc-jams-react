@@ -81,7 +81,6 @@ handleSongClick(song) {
   }
   componentWillUnmount() {
      this.audioElement.src = null;
-     this.audioElement = null;
      this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
      this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
 
@@ -95,7 +94,19 @@ handleSongClick(song) {
  this.setState({volume:e.target.value});
  this.audioElement.volume=e.target.value
  }
+ currentTimeConverter(){
+  const minutes = Math.floor(this.state.currentTime/60);
+  const seconds = Math.floor(this.state.currentTime)-(60*minutes);
+if (seconds.toString().length <2)
+{return minutes +":0"+seconds} else
+ {return minutes +":"+ seconds }
 
+ }
+durationConverter(song){
+  const minutes = Math.floor(this.state.duration/60);
+  const seconds = Math.floor(this.state.duration)-(60*minutes);
+return minutes +":"+ seconds
+}
 
 hover(song){
  this.setState({hoveredSong:song});
@@ -167,7 +178,9 @@ render(){
    currentVolume = {this.state.volume}
    duration={this.audioElement.duration}
    handleTimeChange={(e) => this.handleTimeChange(e)}
-   handleVoumeChange={(e) => this.handleVolumeChange(e)}/>
+   handleVoumeChange={(e) => this.handleVolumeChange(e)}
+   currentTimeConverter={this.currentTimeConverter()}
+   durationConverter={this.durationConverter()}/>
          </section>
      );
   }
