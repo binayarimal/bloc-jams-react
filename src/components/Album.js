@@ -15,7 +15,7 @@ class Album extends Component{
       album: album,
       currentSong: null,
       currentTime: null,
-      duration: 0,
+      duration: album.songs[0].duration,
       isPlaying: false,
       hoveredSong: null,
       volume:0.5,
@@ -94,19 +94,13 @@ handleSongClick(song) {
  this.setState({volume:e.target.value});
  this.audioElement.volume=e.target.value
  }
- currentTimeConverter(){
-  const minutes = Math.floor(this.state.currentTime/60);
-  const seconds = Math.floor(this.state.currentTime)-(60*minutes);
-if (seconds.toString().length <2)
-{return minutes +":0"+seconds} else
- {return minutes +":"+ seconds }
+ formatTime(time){
+   const minutes = Math.floor(time/60);
+   const seconds = time % 60/100
+ return minutes +":"+ seconds.toFixed(2).substr(2,3)
 
  }
-durationConverter(song){
-  const minutes = Math.floor(this.state.duration/60);
-  const seconds = Math.floor(this.state.duration)-(60*minutes);
-return minutes +":"+ seconds
-}
+
 
 hover(song){
  this.setState({hoveredSong:song});
@@ -161,7 +155,7 @@ render(){
                    onMouseLeave ={() => this.hoverOut(song)}>
                   {this.currentSongIcon(song, index)} </td>
                 <td>{song.title}</td>
-                <td>{song.duration}</td>
+                <td>{this.formatTime(song.duration)}</td>
             </tr>
           )}
             </tbody>
@@ -179,8 +173,9 @@ render(){
    duration={this.audioElement.duration}
    handleTimeChange={(e) => this.handleTimeChange(e)}
    handleVoumeChange={(e) => this.handleVolumeChange(e)}
-   currentTimeConverter={this.currentTimeConverter()}
-   durationConverter={this.durationConverter()}/>
+   currentTimeConverter={this.formatTime(this.state.currentTime)}
+   durationConvrter={this.formatTime(this.state.duration)}
+   />
          </section>
      );
   }
