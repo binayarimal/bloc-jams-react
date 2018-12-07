@@ -1,53 +1,182 @@
+
+
 .App {
-
-
-text-align: center;
-
-color:white;
-padding-right:30px;
-padding-left: 30px;
-}
-.background{
-  background-image:url('./assets/images/blurred_backgrounds/blur_bg_3.jpg');
-  background-size: cover;
-}
-.landing-background{
-  background: #fcecfc;
-  background: -moz-linear-gradient(-45deg, #fcecfc 0%, #9ec2ed 26%, #fd89d7 78%, #f77996 99%);
-  background: -webkit-linear-gradient(-45deg, #fcecfc 0%,#9ec2ed 26%,#fd89d7 78%,#f77996 99%);
-  background: linear-gradient(135deg, #fcecfc 0%,#9ec2ed 26%,#fd89d7 78%,#f77996 99%);
-  height: 500px;
-  width: cover;
+  text-align: center;
+  line-height: 2;
+  list-style: square;
+   position: relative;
 
 }
-.hero-title{
+nav{
 
-  font-size: 40px;
-  font-weight:200;
-  letter-spacing: 15px;
-  color:white;
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform: translate(-50%, -50%);
-
-}
-.point{
-  display:inline-grid;
-  width:33.2%;
-  font-weight:100;
-  letter-spacing: 5px;
-  color:white;
-  font-size: 12px
-
-
-
-}
-.icon-size{
-  font-size:60px;
-  margin-top:90px;
+  float:right;
+  z-index:2;
+  position:relative;
+  text-decoration: none;
+  top:100%;
 }
 .title{
-float:left
+  float:left;
+  z-index:2;
+  position:relative;
+  top:100%;
+  padding:15px;
 
+
+}
+.background{
+  background:rgb(236, 236, 236);
+
+}
+.landing-background{
+  background-image: linear-gradient(
+    to right, rgba(131,27,135,1)
+    0%,rgba(125,183,231,0) 99%,
+    rgba(125,185,232,0)),
+    url('./artist-band-bass-92080.jpg');
+    width: 100%;
+    height: 650px;
+    background-position: center center;
+       background-repeat: no-repeat;
+       background-attachment:  scroll;
+       background-size: cover;
+
+
+
+    z-index:1;
+    position:relative;
+
+
+  }
+  .hero-title{
+
+    position:absolute;
+    left:50%;
+    top:45%;
+    transform: translate(-50%, -50%);
+  }
+  .mainTitle{
+    font-size: 40px;
+    font-weight:200;
+    letter-spacing: 15px;
+    color:white;
+    animation-name: moveInLeft;
+    animation-duration: 1.4s;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes moveInLeft {
+    0%{
+      opacity: 0;
+      transform:translateY(150px)
+    }
+    80%{
+      opacity: 1;
+      transform:translateY(-25px);
+    }
+    100%{opacity:1;
+      transform:translateX(0)}
+
+    }
+    .point{
+
+      color:rgb(46, 46, 46);
+      size:cover;
+      padding:15px;
+      text-align: center;
+      font-weight:200;
+      font-stretch:  extra-condensed;
+    }
+    .icon-size{
+      font-size:60px;
+      margin-top:30px;
+      color: rgb(240, 40, 86)
+
+    }
+.nav-btn{
+display: inline-block;
+  background-color: rgb(240, 40, 86);
+  color:white;
+  padding:10px 30px ;
+  border-radius:100px;
+position: relative;
+margin: 10px 10px;
+transition: all .2s;
+
+
+  }
+.nav-btn:hover{
+  transform: translateY(-3px);
+  box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
+}
+.nav-btn:active{
+  transform: translateY(-1px);
+  box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
+}
+.albumCover{
+  height:200px;
+  width:200px;
+  position:relative;
+margin-top:20px;
+transition: all .2s;
+border-radius: 7px;
+
+}
+.albumCover:hover{
+  transform: translateY(-5px);
+  box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
+}
+.albumCover:active{
+  transform: translateY(-2px);
+  box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
+
+}
+
+.albums{
+
+
+
+  text-align: center;
+position:relative;
+padding:12px;
+display:inline-block;
+line-height: 24px;
+color:rgb(70, 70, 70);
+text-align: left;
+text-decoration: none;
+}
+.album-title{
+  font-size:20px;
+  font-weight: 500;
+}
+
+.library{
+  display:inline-block;
+  position:
+}
+#album-cover-art{
+  size:cover;
+  height:auto;
+  width: 100%;
+
+}
+@media(min-width:700px)  {
+  .App{
+    padding:1.4%;
+  }
+  .point{
+    display:inline-grid;
+    width:25.2%;
+  }
+  .landing-background{
+
+     background-attachment: fixed;
+     background-size: cover;
+clip-path:polygon(0 0, 100% 0, 100% 90vh,0 100%);
+
+  }
+
+    .albums{
+  margin-top:200px;
+  }
 }

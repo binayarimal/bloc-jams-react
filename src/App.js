@@ -4,8 +4,9 @@ import './App.css';
 import Landing from './components/Landing';
 import Library from './components/Library';
 import Album from './components/Album';
-import Logo from './assets/images/bloc_jams_logo.png';
-import Background from './assets/images/blurred_backgrounds/blur_bg_3.jpg';
+import Logo from './bloc_jams_logo.png';
+import Background from './blur_bg_3.jpg';
+import HeroImage from './artist-band-bass-92080.jpg'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -22,16 +23,18 @@ class App extends Component {
   changePage()
   {
     if(this.state.currentPage==="library"){
-    return <Link onClick={()=>this.pageClick()} to='/'>Main Page</Link>
+    return <Link className="nav-btn" onClick={()=>this.pageClick()} to='/'>Main Page</Link>
     } else {
-     return <Link onClick={()=>this.pageClick()} to='/library'>Library</Link>
+     return <Link className="nav-btn" onClick={()=>this.pageClick()} to='/library'>Library</Link>
     }
   }  render() {
 
     return (
-      <div className="App">
-    <div className="background">
+      <div className="App" >
+
+
       <body>
+        <div className="background">
       <header>
       <h1 className="title"><img src={Logo} alt={"Bloc Jams"}></img></h1>
       <nav>
@@ -45,9 +48,9 @@ class App extends Component {
       <Route path="/album/:slug" component={Album} />
 
       </main>
-
+</div>
       </body>
-      </div>
+
       </div>
     );
   }

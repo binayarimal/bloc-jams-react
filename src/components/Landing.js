@@ -4,7 +4,11 @@ const Landing = () => (
 
   <section className="landing">
     <div className="landing-background">
-       <h1 className="hero-title">TURN THE MUSIC UP!</h1>
+
+       <div className="hero-title">
+       <h1 className="mainTitle">TURN THE MUSIC UP!</h1>
+       </div>
+
     </div>
 
   <section className="selling-points">
