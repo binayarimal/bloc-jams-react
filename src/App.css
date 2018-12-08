@@ -3,8 +3,7 @@
 .App {
   text-align: center;
   line-height: 2;
-  list-style: square;
-   position: relative;
+  position: relative;
 
 }
 nav{
@@ -37,9 +36,9 @@ nav{
     width: 100%;
     height: 650px;
     background-position: center center;
-       background-repeat: no-repeat;
-       background-attachment:  scroll;
-       background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment:  scroll;
+    background-size: cover;
 
 
 
@@ -93,90 +92,240 @@ nav{
       color: rgb(240, 40, 86)
 
     }
-.nav-btn{
-display: inline-block;
-  background-color: rgb(240, 40, 86);
-  color:white;
-  padding:10px 30px ;
-  border-radius:100px;
-position: relative;
-margin: 10px 10px;
-transition: all .2s;
+    .nav-btn{
+      display: inline-block;
+      background-color: rgb(240, 40, 86);
+      color:white;
+      padding:10px 30px ;
+      border-radius:100px;
+      position: relative;
+      margin: 10px 10px;
+      transition: all .2s;
 
 
-  }
-.nav-btn:hover{
-  transform: translateY(-3px);
-  box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
-}
-.nav-btn:active{
-  transform: translateY(-1px);
-  box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
-}
-.albumCover{
-  height:200px;
-  width:200px;
-  position:relative;
-margin-top:20px;
-transition: all .2s;
-border-radius: 7px;
+    }
+    .nav-btn:hover{
+      transform: translateY(-3px);
+      box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
+    }
+    .nav-btn:active{
+      transform: translateY(-1px);
+      box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
+    }
+    .albumCover{
+      height:200px;
+      width:200px;
+      position:relative;
+      margin-top:20px;
+      transition: all .2s;
+      border-radius: 7px;
 
-}
-.albumCover:hover{
-  transform: translateY(-5px);
-  box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
-}
-.albumCover:active{
-  transform: translateY(-2px);
-  box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
+    }
+    .albumCover:hover{
+      transform: translateY(-5px);
+      box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
+    }
+    .albumCover:active{
+      transform: translateY(-2px);
+      box-shadow:0 10px 20px rgba(0, 0, 0, 0.19);
 
-}
-
-.albums{
-
-
-
-  text-align: center;
-position:relative;
-padding:12px;
-display:inline-block;
-line-height: 24px;
-color:rgb(70, 70, 70);
-text-align: left;
-text-decoration: none;
-}
-.album-title{
-  font-size:20px;
-  font-weight: 500;
-}
-
-.library{
-  display:inline-block;
-  position:
-}
-#album-cover-art{
-  size:cover;
-  height:auto;
-  width: 100%;
-
-}
-@media(min-width:700px)  {
-  .App{
-    padding:1.4%;
-  }
-  .point{
-    display:inline-grid;
-    width:25.2%;
-  }
-  .landing-background{
-
-     background-attachment: fixed;
-     background-size: cover;
-clip-path:polygon(0 0, 100% 0, 100% 90vh,0 100%);
-
-  }
+    }
 
     .albums{
-  margin-top:200px;
-  }
+
+
+
+      text-align: center;
+      position:relative;
+      padding:12px;
+      display:inline-block;
+      line-height: 24px;
+      color:rgb(70, 70, 70);
+      text-align: left;
+      text-decoration: none;
+    }
+    .album-title{
+      font-size:20px;
+      font-weight: 500;
+    }
+
+    .library{
+      display:inline-block;
+    }
+    #album-cover-art{
+      size:cover;
+      height:auto;
+      width: 100%;
+
+
+    }
+    .album{
+      background-image: url('./blur_bg_3.jpg');
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+
+    }
+    .albums-details{
+
+      line-height:0.5;
+      color:white;
+      margin-bottom:25px;
+    }
+
+    .seekbar-container, .volume-container {
+      width: 100%;
+      float:left;
+    }
+    #play-pause{
+      background-color: Transparent;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 40px;
+      margin:10px;
+      color:rgb(240, 40, 86);
+      margin:40px;
+    }
+    #previous{
+      background-color: Transparent;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 30px;
+
+      color:rgb(233, 233, 233)
+    }
+    #next{
+      background-color: Transparent;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;
+      font-size: 30px;
+
+      color:rgb(233, 233, 233)
+    }
+    .seek-bar,.volume-bar {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 99%;
+      height: 2px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+
+    .seek-bar:hover, .volume-bar:hover {
+      opacity: 1;
+
+    }
+
+    .seek-bar::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 2px;
+      background: rgb(240, 40, 86);
+      cursor: pointer;}
+
+      .volume-bar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 12px;
+        height: 8px;
+        background: rgb(240, 40, 86);
+        cursor: pointer;}
+
+        .seek-bar::-webkit-slider-thumb:hover,.volume-bar::-webkit-slider-thumb:hover{
+          height: 20px
+        }
+
+        .ion-volume-low{
+      float:left;
+      margin:5px;
+      color:rgb(240, 40, 86)
+        }
+        .ion-volume-high{
+        float:right;
+        margin:5px;
+          color:rgb(240, 40, 86)
+        }
+        .current-time{
+          float:left;
+          margin-left: 5px;
+          color:white;
+
+
+        }
+        .total-time{
+          float:right;
+          margin-right: 5px;
+          display: inline-grid;
+          color:white;
+
+
+        }
+        table{
+
+          width: 100%;
+          text-align: left;
+          background-color: white;
+          opacity: 0.25;
+
+
+        }
+         tr,td {
+  border-bottom: 1px solid #ddd;
+  border-width: 1px;
+  border-spacing: inherit;
+
+
 }
+        @media(min-width:700px)  {
+          .App{
+            padding:1.4%;
+          }
+
+          .point{
+            display:inline-grid;
+            width:25.2%;
+          }
+
+
+          .albums{
+            margin-top:200px;
+          }
+          .album{
+
+            height: 700px;
+
+          }
+
+          #album-cover-art{
+            size:auto;
+            height:auto;
+            width: auto;
+            margin-top:20px;
+       }
+       table{
+
+         width: 80%;
+         margin-left:auto;
+          margin-right:auto;
+         border-radius:2%;
+         margin-top:10px;
+
+
+
+       }
+        }

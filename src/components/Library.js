@@ -18,14 +18,7 @@ import albumData from './../data/albums';
            <div className="album-title">{album.title}</div>
            <div className="album-details">{album.artist}</div>
            <div className="album-details">{album.songs.length} songs</div>
-           <img className='albumCover' src={album.albumCover} alt={album.title} />
-         <div className="album-title">{album.title}</div>
-         <div className="album-details">{album.artist}</div>
-         <div className="album-details">{album.songs.length} songs</div>
-         <img className='albumCover' src={album.albumCover} alt={album.title} />
-       <div className="album-title">{album.title}</div>
-       <div className="album-details">{album.artist}</div>
-       <div className="album-details">{album.songs.length} songs</div>
+          
              </Link>
 
            )

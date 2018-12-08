@@ -127,20 +127,33 @@ class Album extends Component{
     }
   }
   render(){
-    
+
     return(
       <section className='album'>
 
       <section id="album-info">
       <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
-      <div className="album-details">
+      <div className="albums-details">
       <h1 id="album-title">{this.state.album.title}</h1>
       <h2 className="artist">{this.state.album.artist}</h2>
       <div id="release-info">{this.state.album.releaseInfo}</div>
       </div>
       </section>
 
-
+      <PlayerBar
+      isPlaying={this.state.isPlaying}
+      currentSong={this.state.currentSong}
+      handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+      handlePrevClick={()=>this.handlePrevClick()}
+      handleNextClick={()=>this.handleNextClick()}
+      currentTime={this.audioElement.currentTime}
+      currentVolume = {this.state.volume}
+      duration={this.audioElement.duration}
+      handleTimeChange={(e) => this.handleTimeChange(e)}
+      handleVoumeChange={(e) => this.handleVolumeChange(e)}
+      currentTimeConverter={this.formatTime(this.state.currentTime)}
+      durationConvrter={this.formatTime(this.state.duration)}
+      />
       <table id="song-list" >
 
       <colgroup>
@@ -163,20 +176,7 @@ class Album extends Component{
 
       </table>
 
-      <PlayerBar
-      isPlaying={this.state.isPlaying}
-      currentSong={this.state.currentSong}
-      handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-      handlePrevClick={()=>this.handlePrevClick()}
-      handleNextClick={()=>this.handleNextClick()}
-      currentTime={this.audioElement.currentTime}
-      currentVolume = {this.state.volume}
-      duration={this.audioElement.duration}
-      handleTimeChange={(e) => this.handleTimeChange(e)}
-      handleVoumeChange={(e) => this.handleVolumeChange(e)}
-      currentTimeConverter={this.formatTime(this.state.currentTime)}
-      durationConvrter={this.formatTime(this.state.duration)}
-      />
+
       </section>
     );
   }

@@ -33,8 +33,8 @@ class App extends Component {
       <div className="App" >
 
 
-      <body>
-        <div className="background">
+      <body className="background">
+        <div>
       <header>
       <h1 className="title"><img src={Logo} alt={"Bloc Jams"}></img></h1>
       <nav>
