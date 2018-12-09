@@ -8,26 +8,8 @@ import Logo from './bloc_jams_logo.png';
 import Background from './blur_bg_3.jpg';
 import HeroImage from './artist-band-bass-92080.jpg'
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { currentPage:"landing" };
-  }
 
-  pageClick(){
-    if(this.state.currentPage==="landing"){
-      this.setState({currentPage:"library"});
-    } else{
-      this.setState({currentPage:"landing"});
-    }
-  }
-  changePage()
-  {
-    if(this.state.currentPage==="library"){
-    return <Link className="nav-btn" onClick={()=>this.pageClick()} to='/'>Main Page</Link>
-    } else {
-     return <Link className="nav-btn" onClick={()=>this.pageClick()} to='/library'>Library</Link>
-    }
-  }  render() {
+    render() {
 
     return (
       <div className="App" >
@@ -38,7 +20,9 @@ class App extends Component {
       <header>
       <h1 className="title"><img src={Logo} alt={"Bloc Jams"}></img></h1>
       <nav>
-      {this.changePage()}
+    <Link className="nav-btn" onClick={()=>this.pageClick()} to='/'>Main Page</Link>
+    <Link className="nav-btn" onClick={()=>this.pageClick()} to='/library'>Library</Link>
+   
       </nav>
       </header>
       <main>
