@@ -4,20 +4,9 @@ import React, { Component } from 'react';
    render() {
      return (
        <section className="player-bar">
-       <section id="buttons">
-          <button id="previous" onClick={this.props.handlePrevClick}>
-           <span className="ion-skip-backward"></span>
-         </button>
-          <button id="play-pause" onClick={this.props.handleSongClick} >
-           <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}></span>
-         </button>
-         <button id="next" onClick={this.props.handleNextClick}>
-           <span className="ion-skip-forward" ></span>
-         </button>
-       </section>
-       <section id="time-control">
        <div className="current-time">{this.props.currentTimeConverter}</div>
-           <input
+       <div className="total-time">{this.props.durationConvrter}</div>
+          <div className="seekbar-container"> <input
              type="range"
              className="seek-bar"
              value={(this.props.currentTime / this.props.duration) || 0}
@@ -26,11 +15,28 @@ import React, { Component } from 'react';
              step="0.01"
               onChange={this.props.handleTimeChange}
            />
-           <div className="total-time">{this.props.durationConvrter}</div>
+           </div>
+
+       <section id="buttons">
+          <button id="previous" onClick={this.props.handlePrevClick}>
+           <span className="ion-chevron-left"></span>
+         </button>
+          <button id="play-pause" onClick={this.props.handleSongClick} >
+           <span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}></span>
+         </button>
+         <button id="next" onClick={this.props.handleNextClick}>
+           <span className="ion-chevron-right" ></span>
+         </button>
+       </section>
+       <section id="time-control">
+
+
+
        </section>
        <section id="volume-control">
-         <div className="icon ion-volume-low"></div>
-          <div className="current-time">{Math.floor(this.props.currentVolume*100)}</div>
+
+          <div className="volume-container">
+
          <input
             type="range"
             className="volume-bar"
@@ -39,10 +45,12 @@ import React, { Component } from 'react';
             min="0"
             step="0.01"
              onChange={this.props.handleVoumeChange }
+         />
 
-
-          />
+          <div className="icon ion-volume-low"></div>
          <div className="icon ion-volume-high"></div>
+         </div>
+
        </section>
        </section>
      );

@@ -10,16 +10,20 @@ import albumData from './../data/albums';
    render() {
     return (
       <section className="library">
+      <div className="albumData">
       {
            this.state.albums.map( (album, index) =>
-            <Link to={`/album/${album.slug}`} key={index}>
-             <img src={album.albumCover} alt={album.title} />
-           <div>{album.title}</div>
-           <div>{album.artist}</div>
-           <div>{album.songs.length} songs</div>
+            <Link className="albums" to={`/album/${album.slug}`} key={index}>
+             <img className='albumCover' src={album.albumCover} alt={album.title} />
+           <div className="album-title">{album.title}</div>
+           <div className="album-details">{album.artist}</div>
+           <div className="album-details">{album.songs.length} songs</div>
+          
              </Link>
+
            )
          }
+         </div>
          </section>
      );
    }
